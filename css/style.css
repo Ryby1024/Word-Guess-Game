@@ -1,0 +1,25 @@
+.bigbang    {
+    width: 50%;
+    height: 25%;
+
+}
+.container  {
+    text-align: center;
+    font-size: 25px;
+    border: 3px solid black;
+}
+#directions-text    {
+    border: 1px solid black;
+}
+#wins-text  {
+    border: 1px solid black;
+}
+#losses-text    {
+    border: 1px solid black;
+}
+#guesses-left   {
+    border: 1px solid black;
+}
+#letter-used    {
+    border: 1px solid black;
+}
