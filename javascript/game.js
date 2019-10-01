@@ -29,15 +29,18 @@ document.onkeyup = function(e) {
             if (word[i] === userChoice) {
                 underScore[i] = userChoice;
                 console.log(underScore)
+
+                if(word[i] != userChoice){
+                    guessesLeft--;
+                }
             }
+
         }
     }
-    else {
-        wrongLetter.push(userChoice);
-        guessesLeft--;
+    // else {
+        
        
-        if(guessesLeft === 0){
-            losses++;
+        
         }     
     for (var i =0; i < word.length; i++) {
         underScore.push("_");
@@ -49,8 +52,11 @@ document.onkeyup = function(e) {
     // userChoiceText.textContent = "letters-used: " + userChoice;
     // winsText.textContent = "Wins: " + wins;
     // lossesText.textContent = "Losses: " + losses;
-    // guessesLeftText.textContent = "Guesses Left: " - guessesLeftText;
+    // guessesLeftText.textContent =  10 - guessesLeftText;
 
     
-    }
-}
+    // }
+// }
+
+
+

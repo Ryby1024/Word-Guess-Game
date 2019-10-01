@@ -23,3 +23,9 @@
 #letter-used    {
     border: 1px solid black;
 }
+h4  {
+    border: 1px solid black;
+}
+.guess  {
+    margin-bottom: 0px;
+}
