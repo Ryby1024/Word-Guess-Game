@@ -19,28 +19,28 @@ document.onkeyup = function(e) {
         document.getElementById("letters-used").textContent = "Letters Already Guessed: " + lettersGuessed;
     console.log(userChoice)
     for(var i = 0; i < word.length; i++){
-        underScore.push("_");
-           document.getElementById("current-word").textContent = underScore;
-           console.log(word)
-    }
         if(word.indexOf(userChoice) > -1){
-        
+            underScore.push("_");
 
              if (word[i] === userChoice) {
                 underScore[i] = userChoice;
                 console.log(underScore)
-            }
-                else (word[i] != userChoice) 
+            
+                if (word[i] != userChoice) 
                     underScore[i] = userChoice;
                     guessesLeft--;
-                 
+                }   
             }
                 
             
             
+        }
         
-        
-        
+        for (var j =0; j < word.length; j++) {
+            
+           document.getElementById("current-word").textContent = underScore;
+           console.log(word)
+    }
     
         
        
