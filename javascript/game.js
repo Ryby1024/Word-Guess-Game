@@ -1,4 +1,4 @@
-var wordList = ["sheldon", "leonard", "penny", "raj", "howard", "amy", "bernadette", "bazinga", "stewart", "physics", "astrology", "engineer"];
+var wordList = ["SHELDON", "LEONARD", "PENNY", "RAJ", "HOWARD", "AMY", "BERNADETTE", "BAZINGA", "STEWART", "PHYSICS", "ASTROLOGY", "ENGINEER"];
 
 // Assigning variables
 var randomNum = [Math.floor(Math.random() * wordList.length)];
@@ -9,31 +9,50 @@ var guessesLeft = 10;
 var lettersGuessed = [];
 var userChoice;
 var answerArray = [];
+var underScoreWord = [];
 
 
 $(document).ready(function () {
     console.log(word)
-    for(let i = 0; i < word.length; i++) {
-     myWord = word.replace(/[a-z]/g, " _ ")
-     console.log()
-    document.getElementById("current-word").textContent = myWord
+    for (let i = 0; i < word.length; i++) {
+        underScoreWord.push("_");        
+    }
+    document.getElementById("current-word").innerHTML = underScoreWord.join(" ");
+
+    function letterInWord(letter) {
+        var positions = new Array();
+        for (i = 0 ; i < word.length; i++) {
+            if (word[i] === letter)
+                positions.push(i);
+        }
+        return positions;
     }
 
 
     // Logging the users key press.
     document.onkeyup = function (e) {
-        userChoice = e.key.toLowerCase();
+        userChoice = e.key.toUpperCase();
         lettersGuessed.push(userChoice);
         console.log(lettersGuessed)
         document.getElementById("letters-used").textContent = "Letters Already Guessed: " + lettersGuessed;
         console.log(userChoice)
         console.log(word)
 
-        for( let i = 0; i < word.length; i++) {
-            if(word[i] === userChoice){
-                console.log("match")
+        var positions = letterInWord(userChoice);
+
+        if (positions.length) {
+            console.log("User has pressed a letter from word: " + userChoice);
+
+            for (i = 0 ; i < positions.length; i++) {
+                underScoreWord[positions[i]] = userChoice;
             }
-        }
+
+            // replace progress Word underscore with letter pressed
+            document.getElementById("current-word").innerHTML = underScoreWord.join(" ");
+        } else {
+            // alert("WRONG!");
+            document.getElementById("letters-used").innerHTML += userChoice + " ";
     }
+}
 
 })
