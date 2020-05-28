@@ -18,6 +18,17 @@ function letterInWord(letter) {
     }
     return positions;
 }
+
+function lettersToGuess() {
+    var i ;
+    var toGuess = 0 ;
+    for (i in underScoreWord) {
+        if (underScoreWord[i] === "_")
+            toGuess++;
+    }
+    return toGuess;
+}
+
 function getWord() {
     wordList = ["SHELDON", "LEONARD", "PENNY", "RAJ", "HOWARD", "AMY", "BERNADETTE", "BAZINGA", "STEWART", "PHYSICS", "ASTROLOGY", "ENGINEER"];
     randomNum = [Math.floor(Math.random() * wordList.length)];
@@ -30,7 +41,7 @@ function getWord() {
 }
 
 function checkWin() {
-    if(word.length === positions.length) {
+    if(lettersToGuess() === 0) {
         alert("Congratulations, you got it right!");
         answerArray = [];
         guessesLeft = 10;
@@ -40,6 +51,7 @@ function checkWin() {
         word = "";
         wins++
         document.getElementById("wins-text").innerHTML = wins;
+        document.getElementById("guesses-left").innerHTML = guessesLeft;
         getWord();
     }
 }
@@ -54,6 +66,7 @@ function checkGuesses() {
         word = "";
         losses++
         document.getElementById("losses-text").innerHTML = losses;
+        document.getElementById("guesses-left").innerHTML = guessesLeft;
         getWord();
     }
 
