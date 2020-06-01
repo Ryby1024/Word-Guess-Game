@@ -102,8 +102,8 @@ $(document).ready(function () {
         } else {
             guessesLeft--;
             document.getElementById("guesses-left").innerHTML = guessesLeft;
-            checkGuesses();
             checkWin();
+            checkGuesses();
         }  
         
 }
